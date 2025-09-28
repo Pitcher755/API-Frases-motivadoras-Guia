@@ -528,9 +528,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 💡 Esta clase es el punto de entrada que hace que Spring Boot cobre vida.
  * ⚡ Es como el botón de encendido de toda nuestra aplicación.
  * 
- * @author [Tu Nombre]
+ * @author PitcherDev
  * @version 1.0
- * @since 2024
+ * @since 2025
  */
 @SpringBootApplication  // 🎪 ¡La anotación mágica que lo hace todo posible!
 public class FrasesMotivadorasApplication {
@@ -700,14 +700,6 @@ public static void main(String[] args) {
     System.out.println("🚀 Iniciando la API de Frases Motivadoras...");
     System.out.println("💫 Próximamente: inspiración para developers");
     
-    SpringApplication app = new SpringApplication(FrasesMotivadorasApplication.class);
-    
-    // Configuraciones adicionales (opcional)
-    app.setBannerMode(Banner.Mode.CONSOLE);
-    
-    app.run(args);
-    
-    System.out.println("✅ ¡API lista para inspirar!");
 }
 ```
 
