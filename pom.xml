@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+- ARCHIVO: pom.xml
+- PROPÓSITO: Es el "libro de recetas" de nuestro proyecto motivador
+- Spring Boot hace el 80% del trabajo pesado por nosotros
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- ======================
+		 NUESTRA IDENTIFICACIÓN
+		 ====================== -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- HERENCIA DE SPRING BOOT (el papá que sabe mucho) -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.6</version>
+		<relativePath />
+		<!-- RELATIVE_PATH: "Confía en mí, yo sé dónde encontrar las instrucciones"
+		 	 Spring Boot ya sabe dónde está el manual de instrucciones 
+		-->
+	</parent>
+	<!-- NUESTRO DNI DIGITAL -->
+	<groupId>com.motivacion</groupId>
+	<artifactId>frases-motivadoras</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 
+		- GROUP_ID: com.motivacion (como tu apellido)
+		- ARTIFACT_ID: frases-motivadoras (tu nombre)
+		- VERSION: 0.0.1-SNAPSHOT (estamos en versión beta emocionante)
+	-->
+
+	<name>frases-motivadoras</name>
+	<description>API de frases motivadoras para desarrolladores</description>
+	<!-- El nombre bonito  y la descripción que verá todo el mundo -->
+
+	<!-- ====================== 
+	 	 CONFIGURACIONES TÉCNICAS
+		 ====================== -->
+	<properties>
+		<java.version>17</java.version>
+		<!-- 
+			- JAVA-VERSION: Usamos Java 17 - ¡Estable y moderno!
+			- Es como usar la versión más estable de tu app favorita
+		-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Para que acepte tildes, emojis y caracteres especiales -->
+	</properties>
+
+	<!-- ====================== 
+	 	 NUESTROS SUPERPODERES (DEPENDENCIAS)
+	 	 ====================== -->
+	<dependencies>
+		<!-- SUPERPODER 1: Base de Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<!-- 
+				- El cimiento de todo - sin esto, nada funciona 
+			 	- Incluye: Configuración automática, gestión de vida de la app
+			-->
+		</dependency>
+		<!-- SUPERPODER 2: Base de Datos (JPA) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<!-- 
+				- JPA: Java Persistence API - ¡Habla con bases de datos por nosotros!
+				- Incluye: Hibernate (el traductor español-base_de_datos)
+				- Aprenderás a guardar frases sin escribir SQL complicado
+			-->
+		</dependency>
+		<!-- SUPERPODER 3: Web (para crear la API REST) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 
+				- Esto es mágico: Nos permite crear APIs sin configurar servidores
+				- Incluye: Servidor Tomcat embebido, conversión JSON automática
+				- ¡Nuestra API entenderá JSON sin que le enseñenos
+			-->
+		</dependency>
+		<!-- SUPERPODER 4: Base de datos H2 (nuestra memoria temporal) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+			<!-- 
+				- H2: Base de datos en memoria - Perfecta para aprender
+			 	- SCOPE=RUNTIME: Solo existe cuando la app está corriendo
+				- Como una pizarra que se borra cuando apagas la app
+			-->
+		</dependency>
+		<!-- SUPERPODER 5: Testing (nuestro equipo de calidad) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<!-- 
+				- SCOPE=TEST: Solo aparece cuando estamos probando
+				- Como los amigos que solo llamas cuando necesitas ayuda con muebles
+			-->
+		</dependency>
+	</dependencies>
+
+	<!-- ======================
+		 HERRAMIENTAS DE CONSTRUCCIÓN
+		 ====================== -->
+	<build>
+		<plugins>
+			<!-- HERRAMIENTA 1: Plugin principal de Spring Boot -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- 
+				 	- El empaquetador profesional: Crea el JAR ejecutable
+					- Convierte nuestro código en una app que cualquiera puede ejecutar
+				-->
+			</plugin>
+			<!-- HERRAMIENTA 2: Saltar pruebas (modo desarrollo rápido) -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<skipTests>true</skipTests>
+					<!-- 
+					    - SKIP_TESTS: Para desarrollo rápido (no en producción)
+						- Como correr los 100m sin calentar - rápido pero arriesgado
+					-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
