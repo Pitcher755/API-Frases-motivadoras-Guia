@@ -59,7 +59,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         List<FraseMotivadora> findByCategoriaIgnoreCase(String categoria);
 
         /**
-         * BUSCAR FRASES POR LENGUEJE DE PROGRAMACIÓN
+         * BUSCAR FRASES POR LENGUAJE DE PROGRAMACIÓN
          * 
          * Ejemplo de uso:
          * - findByLenguaje("java") -> frases específicas para Java
