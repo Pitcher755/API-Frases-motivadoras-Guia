@@ -40,7 +40,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
          * 
          * Spring Data JPA genera el SQL automáticamente basandose en el nombre del
          * método.
-         * Convención: fingBy + NombreCampo + (Condiciones)
+         * Convención: findBy + NombreCampo + (Condiciones)
          */
 
         /**
