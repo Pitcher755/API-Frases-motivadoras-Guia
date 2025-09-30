@@ -109,7 +109,7 @@ public class FraseMotivadora {
      * -5: Experto (architect, lead, etc.)
      */
     @Column(name = "nivel_dificultad")
-    private int nivelDificultad;
+    private Integer nivelDificultad;
 
     /**
      * FRASE DESTACADA: Si es una frase especialmente inspiradora
@@ -230,7 +230,7 @@ public class FraseMotivadora {
         return lenguaje;
     }
 
-    public int getNivelDificultad() {
+    public Integer getNivelDificultad() {
         return nivelDificultad;
     }
 
@@ -278,7 +278,7 @@ public class FraseMotivadora {
         actualizarFechaModificacion();
     }
 
-    public void setNivelDificultad(int nivelDificultad) {
+    public void setNivelDificultad(Integer nivelDificultad) {
         this.nivelDificultad = nivelDificultad;
         actualizarFechaModificacion();
     }
