@@ -107,6 +107,15 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         List<FraseMotivadora> findByAutorAndCategoria(String autor, String categoria);
 
         /**
+         * BUSCAR FRASES POR CATEGORÍA Y LENGUAJE
+         * 
+         * @param categoria La categoría a filtrar
+         * @param lenguaje  El lenguaje de programación
+         * @return Lista de frases que cumplen ambos criterios
+         */
+        List<FraseMotivadora> findByCategoriaAndLenguaje(String categoria, String lenguaje);
+
+        /**
          * BUSCAR FRASES POR CONTENIDO (búsqueda parcial)
          * 
          * Busca frases que contengan cierto texto en su contenido.
@@ -122,6 +131,18 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         List<FraseMotivadora> findByContenidoContainingIgnoreCase(String texto);
 
         /**
+         * BUSCAR FRASES POR CONTENIDO QUE EMPIECE POR CIERTO TEXTO
+         * 
+         * Busca frases que empiecen por cierto texto en su contenido
+         * 
+         * SQL: SELECT * FROM frase_motivadora WHERE contenido LIKE '?%'
+         * 
+         * @param inicio El inicio de la frase
+         * @return Lista de frases que comienzan por ese inicio
+         */
+        List<FraseMotivadora> findByContenidoStartingWithIgnoreCase(String inicio);
+
+        /**
          * CONTAR FRASES POR CATEGORÍA
          * 
          * Ejemplo de uso:
@@ -131,6 +152,14 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
          * @return Numero de frases en esa categoría
          */
         Long countByCategoria(String categoria);
+
+        /**
+         * CONTAR FRASES POR LENGUAJE
+         * 
+         * @param lenguaje EL lenguaje a contar
+         * @return Numero de frases en ese lenguaje
+         */
+        Long countByLenguaje(String lenguaje);
 
         /**
          * VERIFICAR SI EXISTE UNA FRASE POR AUTOR Y CONTENIDO
