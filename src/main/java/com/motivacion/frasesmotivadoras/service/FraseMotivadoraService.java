@@ -187,6 +187,18 @@ public class FraseMotivadoraService {
     }
 
     /**
+     * OBTENER FRASES POR CATEGORÍA
+     * 
+     * Lista de frases filtrada de una categoría específica.
+     * 
+     * @param categoria Categoría de la lista de frases
+     * @return Lista de frases de una categoría
+     */
+    public List<FraseMotivadora> obtenerFrasesPorCategoria(String categoria) {
+        return fraseRepository.findByCategoriaIgnoreCase(categoria);
+    }
+
+    /**
      * OBTENER FRASE ALEATORIA POR CATEGORÍA
      * 
      * Frase aleatoria pero filtrada por categoría específica.
@@ -293,6 +305,18 @@ public class FraseMotivadoraService {
                 frasesDestacadas,
                 categorias,
                 fraseRepository.findAutoresUnicos().size());
+    }
+
+    /**
+     * OBTENER CATEGORÍAS DISPONIBLES
+     * 
+     * Lista todas las categorías únicas disponibles en el sistema.
+     * Útil para que los clients sepan qué categorías pueden usar.
+     * 
+     * @return Lista de categorías únicas
+     */
+    public List<String> obtenerCategorias() {
+        return fraseRepository.findCategoriasUnicas();
     }
 
     /**
@@ -430,4 +454,5 @@ public class FraseMotivadoraService {
         // 3. Como último recurso, frase aleatoria usando el método existente
         return fraseRepository.findFraseAleatoria();
     }
+
 }

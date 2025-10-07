@@ -2527,7 +2527,7 @@ public class FraseMotivadoraController {
             return ResponseEntity.badRequest().build(); // 🔴 400 Bad Request
         }
         
-        List<FraseMotivadora> frases = fraseService.obtenerFrasesPorDificultad(nivel);
+        List<FraseMotivadora> frases = fraseService.obtenerFrasesParaNivel(nivel);
         return ResponseEntity.ok(frases);
     }
 
@@ -2768,9 +2768,9 @@ import org.springframework.web.bind.annotation.RestController;
  * - GET /ping → Verificación básica de que la app responde
  * - GET /health → Información más detallada del estado
  * 
- * @author [Tu Nombre]
+ * @author PitcherDev
  * @version 1.0
- * @since 2024
+ * @since 2025
  */
 @RestController
 public class HealthCheckController {
