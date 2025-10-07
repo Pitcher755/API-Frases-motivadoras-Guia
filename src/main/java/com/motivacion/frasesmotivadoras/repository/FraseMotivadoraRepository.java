@@ -91,7 +91,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
          * @param nivelDificultad El nivel (1-5)
          * @return Lista de frases para ese nivel
          */
-        List<FraseMotivadora> findByNivelDificultad(int nivelDificultad);
+        List<FraseMotivadora> findByNivelDificultad(Integer nivelDificultad);
 
         /**
          * BUSCAR FRASES POR AUTOR Y CATEGORÍA (combinación)
@@ -107,7 +107,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         List<FraseMotivadora> findByAutorAndCategoria(String autor, String categoria);
 
         /**
-         * BUSCAR FRASES POR CATEGORÍA Y LENGUAJE
+         * BUSCAR FRASES POR CATEGORÍA Y LENGUAJE (Ejercicio de ampliación 1)
          * 
          * @param categoria La categoría a filtrar
          * @param lenguaje  El lenguaje de programación
@@ -131,7 +131,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         List<FraseMotivadora> findByContenidoContainingIgnoreCase(String texto);
 
         /**
-         * BUSCAR FRASES POR CONTENIDO QUE EMPIECE POR CIERTO TEXTO
+         * BUSCAR FRASES POR CONTENIDO QUE EMPIECE POR CIERTO TEXTO (Ejercicio 2)
          * 
          * Busca frases que empiecen por cierto texto en su contenido
          * 
@@ -154,7 +154,7 @@ public interface FraseMotivadoraRepository extends JpaRepository<FraseMotivadora
         Long countByCategoria(String categoria);
 
         /**
-         * CONTAR FRASES POR LENGUAJE
+         * CONTAR FRASES POR LENGUAJE (Ejercicio 3)
          * 
          * @param lenguaje EL lenguaje a contar
          * @return Numero de frases en ese lenguaje

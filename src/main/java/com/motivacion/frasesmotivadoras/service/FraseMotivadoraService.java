@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.motivacion.frasesmotivadoras.model.FraseMotivadora;
@@ -53,7 +52,6 @@ public class FraseMotivadoraService {
      * 
      * @param fraseRepository El repository que Spring nos inyecta automáticamente
      */
-    @Autowired
     public FraseMotivadoraService(FraseMotivadoraRepository fraseRepository) {
         this.fraseRepository = fraseRepository;
     }
@@ -105,9 +103,7 @@ public class FraseMotivadoraService {
         frase.setFechaActualizacion(LocalDateTime.now());
 
         // Validación adicional: evitar frases vacías
-        if (frase.getContenido() == null || frase.getContenido().trim().isEmpty()) {
-            throw new IllegalArgumentException("El contenido de la frase no puede estar vacío");
-        }
+        validarFrase(frase);
 
         return fraseRepository.save(frase);
     }
@@ -184,6 +180,18 @@ public class FraseMotivadoraService {
      */
     public Optional<FraseMotivadora> obtenerFraseAleatoria() {
         return fraseRepository.findFraseAleatoria();
+    }
+
+    /**
+     * OBTENER FRASES POR CATEGORÍA
+     * 
+     * Lista de frases filtrada de una categoría específica.
+     * 
+     * @param categoria Categoría de la lista de frases
+     * @return Lista de frases de una categoría
+     */
+    public List<FraseMotivadora> obtenerFrasesPorCategoria(String categoria) {
+        return fraseRepository.findByCategoriaIgnoreCase(categoria);
     }
 
     /**
@@ -283,16 +291,28 @@ public class FraseMotivadoraService {
         long frasesDestacadas = fraseRepository.findByDestacadaTrue().size();
         List<String> categorias = fraseRepository.findCategoriasUnicas();
 
-        return String.format(
-                "Estadísticas de frases motivadoras:\n" +
-                        "* Total de frases: %d\n" +
-                        "* Frases destacadas: %d\n" +
-                        "* Categorías disponibles: %s\n" +
-                        "* Autores únicos: %d",
+        return String.format("""
+                Estadísticas de frases motivadoras:
+                * Total de frases: %d
+                * Frases destacadas: %d
+                * Categorías disponibles: %s
+                * Autores únicos: %d""",
                 totalFrases,
                 frasesDestacadas,
                 categorias,
                 fraseRepository.findAutoresUnicos().size());
+    }
+
+    /**
+     * OBTENER CATEGORÍAS DISPONIBLES
+     * 
+     * Lista todas las categorías únicas disponibles en el sistema.
+     * Útil para que los clients sepan qué categorías pueden usar.
+     * 
+     * @return Lista de categorías únicas
+     */
+    public List<String> obtenerCategorias() {
+        return fraseRepository.findCategoriasUnicas();
     }
 
     /**
@@ -430,4 +450,5 @@ public class FraseMotivadoraService {
         // 3. Como último recurso, frase aleatoria usando el método existente
         return fraseRepository.findFraseAleatoria();
     }
+
 }
